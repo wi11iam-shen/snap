@@ -26,7 +26,6 @@ async function randomDogImage( breed){
 addEventListener("DOMContentLoaded", getRandomImage);
 
 
-const data =
 {
     "dogs": {
       "affenpinscher": [],
@@ -444,7 +443,7 @@ const data =
     },
     {
       "id": "norw",
-      "name": "Norwegian Forest Cat",
+      "name": "Norwegian Forest Cat"
     },
     {
       "id": "ocic",
@@ -517,7 +516,7 @@ const data =
     {
 
       "id": "tonk",
-      "name": "Tonkinese",
+      "name": "Tonkinese"
     },
     {
       "id": "toyg",
