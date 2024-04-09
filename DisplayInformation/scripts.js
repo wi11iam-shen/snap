@@ -3,16 +3,16 @@ import data from "./data.json" with {type: "json"};
 const database = data;
 let current_dog = "";
 let current_cat = "";
-const favorite_dogs = {}
-const favorite_cats = {}
+const favorite_dogs = []
+const favorite_cats = []
 
 //When reloaded add images ins
 addEventListener("DOMContentLoaded", reload);
 //Refresh the images when the button is clicked
 document.getElementById("refresh").addEventListener("click", reload);
 //Add to favorite functions for cat and dog buttons
-document.getElementById("dog-button").addEventListener("click", favorite("dog"));
-document.getElementById("cat-button").addEventListener("click", favorite("cat"));
+document.getElementById("dog-button").addEventListener("click", click_dog);
+document.getElementById("cat-button").addEventListener("click", click_cat);
 
 
 //Grab a random image from one of the two api's depending on the button clicked
@@ -86,24 +86,43 @@ function reload(){
 
 }
 
+function show(animal_list, location){
+  const parent = document.getElementById(location);
+  removeAllChildNodes(parent);
+  if(animal_list.length >0){
+  for (let animal in animal_list){
+    const new_fav = document.createElement("li"); 
+    new_fav.appendChild(document.createTextNode(animal_list[animal]));
+    parent.appendChild(new_fav);
+  }
+} 
+}
 
-function favorite(category){
-  if(category == "dog"){
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
+
+function click_dog(){
       //Check if the breed exists in the list already
-      if(current_dog in favorite_dogs){
+      if(favorite_dogs.includes(current_dog)){
         alert("You already have this type of dog saved");
       } else{
-        favorite_dogs.append(favorite_dogs);
+        favorite_dogs.push(current_dog);
+        console.log(favorite_dogs);
         show(favorite_dogs, "dog-list");
       }
-  }else {
-      if(current_cat in favorite_cats){
+    }
+function click_cat(){
+      if(favorite_cats.includes(current_cat)){
         alert("You already have this type of cat saved");
       }else{
-        favorite_cats.append(favorite_cats);
+        favorite_cats.push(current_cat);
         show(favorite_cats, "cat-list");
       }
   }
-}
+
 
 
