@@ -10,27 +10,67 @@ async function randomDogImage( breed){
         img.style.width = "300px";
         img.style.height = "300px";
         const dogSrc = document.getElementById("dogcard");
-        dogSrc.append(img);
+        if(dogSrc.childNodes.length > 0){
+            dogSrc.removeChild(dogSrc.lastChild);
+            dogSrc.append(img);
+        }
+        else{
+            dogSrc.append(img);
+        }
+        
     } catch(error){
         console.error("There was an error", error);
     }
 }
-
-
 //Grab a random image from one of the two api's depending on the button clicked
 async function randomCatImage( breed){
-    url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breed}`;
+    let url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breed}`;
     try{
         const response = await fetch(url);
         const data = await response.json();
-        //Add a function to input the image into the proper container
+        const img = document.createElement("img");
+        img.src = data[0]["url"];
+        img.style.width = "300px";
+        img.style.height = "300px";
+        const catSrc = document.getElementById("catcard");
+        if(catSrc.childNodes.length > 0){
+            catSrc.removeChild(catSrc.lastChild);
+            catSrc.append(img);
+        }
+        else{
+            catSrc.append(img);
+        }
     } catch(error){
         console.error("There was an error", error);
     }
 }
 
-addEventListener("DOMContentLoaded", randomDogImage("greyhound"));
+function randomBreed(count, type){
+    let random_breed = Math.floor(Math.random() * count);
+    if(type == "Dog"){
+        let dog_array = Object.keys(database["dogs"])[random_breed];
+        return dog_array;
+    } else{
+        return database["cats"][random_breed]["id"];
+    }
+}
 
+//Load images when file loaded in
+
+function reload(){
+    const dog_count = Object.keys(database["dogs"]).length;
+    const cat_count =Object.keys(database["cats"]).length;
+    let first_dog = randomBreed(dog_count, "Dog");
+    let first_cat = randomBreed(cat_count, "Cat");
+    randomDogImage(first_dog);
+    randomCatImage(first_cat);
+
+}
+
+
+addEventListener("DOMContentLoaded", reload);
+//Refresh the images when the button is clicked
+document.getElementById("refresh").addEventListener("click", reload);
 
 const database ={
     "dogs": {

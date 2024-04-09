@@ -28,12 +28,37 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 50px;
-}
-.list-card{
-    
+    margin-bottom: 5px;
 }
 .card-content {
-    padding: 20px;
+    justify-content: left;
+    padding: 5px;
     font-family: "Verdana";
     color: #474787;
+    margin-left: 140px;
+    margin-right:140px;
+    background-color: #0cca05;
+    border-radius: 25px;
+    font-weight: bold;
+    
+}
+
+.button-refresh{
+    width: 50px;
+    height: 50px;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+button {
+    text-align: left;
+    background-color: #f50000;
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: bold;
 }
