@@ -1,10 +1,16 @@
 //Grab a random image from one of the two api's de  pending on the button clicked
 async function randomDogImage( breed){
-    url = `https://dog.ceo/api/breed/${breed}/images/random`;
+    let url = `https://dog.ceo/api/breed/${breed}/images/random`;
     try{
         const response = await fetch(url);
         const data = await response.json();
         //Add a function to input the image into the proper container
+        const img = document.createElement("img");
+        img.src = data["message"];
+        img.style.width = "300px";
+        img.style.height = "300px";
+        const dogSrc = document.getElementById("dogcard");
+        dogSrc.append(img);
     } catch(error){
         console.error("There was an error", error);
     }
@@ -12,7 +18,7 @@ async function randomDogImage( breed){
 
 
 //Grab a random image from one of the two api's depending on the button clicked
-async function randomDogImage( breed){
+async function randomCatImage( breed){
     url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breed}`;
     try{
         const response = await fetch(url);
@@ -23,10 +29,10 @@ async function randomDogImage( breed){
     }
 }
 
-addEventListener("DOMContentLoaded", getRandomImage);
+addEventListener("DOMContentLoaded", randomDogImage("greyhound"));
 
 
-{
+const database ={
     "dogs": {
       "affenpinscher": [],
       "african": [],
