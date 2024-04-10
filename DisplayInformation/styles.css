@@ -2,18 +2,22 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #AAABB8;
+    width: 100%;
+    height: 100%;
+    /* background-image: linear-gradient(to top, #ff568baa, #1D2671, #603813, #b29f94, #9796f0, #FBC7D4); */
+    /* background-image: linear-gradient(to bottom, rgb(195,55,100), rgb(29,38,113), ); */
+    background-image: linear-gradient(to bottom, #ffedd5, #bfdbfe)
 }
 .main-header {
     font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
-    margin: 20px;
+    
     border-radius: 20px;
 }
 .title{
     text-align: center;
     margin: 10px;
     font-size: 4em;
-    color: #474787;
+    color: #B0C4DE;
 }
 
 #card-container {
@@ -27,10 +31,10 @@ body {
     margin-top: 1%; 
 }
 .card {
-    max-width: 350px;
-    max-height: 300px;
+    max-width: 400px;
+    max-height: 400px;
     border: 3px solid #000000;
-    border-radius: 5px;
+    border-radius: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 50px;
     margin-left: 8%;
@@ -38,65 +42,143 @@ body {
     margin-bottom: 5px;
 }
 #favorite-container{
-    justify-content: center;
+    justify-content: space-evenly;
     display: flex;
     margin: 10px;
 }
-/* CSS */
+
 .button-fav {
   background-color: #c2fbd7;
-  border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px;
+  border-radius: 50px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: green;
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
   padding: 7px 20px;
   text-align: center;
+  transition: all 250ms;
   border: 0;
   font-size: 16px;
-  margin-left: 15%;
-  margin-right: 15%;
-  position: relative;
+}
+.button-fav:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
 }
 
-.button-refresh{
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-}
-
+/* CSS */
 #refresh {
-    text-align: center;
-    background-color: #e4685d;
-    border: none;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    color: white;
-    font-size: 11px;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 5px 5px;
+  align-items: center;
+  background-color: #FFE7E7;
+  background-position: 0 0;
+  border: 2px solid #D33A2C;
+  border-radius: 50px;
+  box-sizing: border-box;
+  color: #D33A2C;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33px;
+  padding: 20% 20%;
+  text-align: center;
+  text-underline-offset: 1px;
+  transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+  touch-action: manipulation;
+  white-space: nowrap;
+  word-break: break-word;
+  width: 100px;
+  height: 100px;
 }
+
+#refresh:active,
+#refresh:hover,
+#refresh:focus {
+  outline: 0;
+}
+#refresh:active {
+  background-color: #D33A2C;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
+}
+#refresh:hover {
+  background-color: #FFE3E3;
+  border-color: #FAA4A4;
+}
+
 .list-card{
     font-family: "Marker Felt, fantasy";
     border-radius: 25px;
     border: 5px solid #000000;
-    width: 300px;
+    width: 400px;
     height: auto;
     margin-left: 11.5%;
     margin-right: 11.5%;
     margin-top: auto;
     margin-bottom: auto;
     display: flex;
+    flex-direction: column;
     position: relative;
 
 }
-li{
-    background-color: aqua;
-    opacity: 40%;
+
+#span-card{
+    width: auto;
+    display:flex; 
+    border-radius: 5px;
+    padding: 5px;
+    justify-content: space-between;
+    
 }
-.remove-button{
+
+.name-card{
+    font-family: "Verdana";
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+#remove-button {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font: "proxima nova",sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 12px;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+#remove-button:hover,
+#remove-button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+#remove-button:active {
+  opacity: .5;
+}
+
+.title-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.title-card{
+    text-align: center;
+    font-size: 40px;
+    color: #fdba74;
+    margin-bottom: 0px;
 
 }
